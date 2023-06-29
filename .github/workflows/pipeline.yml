@@ -28,7 +28,6 @@ jobs:
       - name: e2e tests
         uses: cypress-io/github-action@v5
         with:
-          # browser: chrome
           command: npm run cypress:run
           start: npm run start-prod
           wait-on: "http://localhost:5000"
@@ -39,6 +38,7 @@ jobs:
     runs-on: ubuntu-22.04
     if: ${{ github.event_name == 'push' }}
     steps:
+      - uses: actions/checkout@v3
       - uses: anothrNick/github-tag-action@1.64.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
