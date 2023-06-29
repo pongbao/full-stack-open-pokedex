@@ -15,6 +15,8 @@ app.get("/version", (req, res) => {
 });
 
 app.get("/", (req, res) => {
+  res.status(200);
+  /* eslint-disable no-console */
   console.log("http check OK");
 });
 
