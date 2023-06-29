@@ -11,7 +11,11 @@ app.get("/health", (req, res) => {
 });
 
 app.get("/version", (req, res) => {
-  res.status(200).send("App Version: 3.0");
+  res.status(200).send("App Version: 3.0.1");
+});
+
+app.get("/", (req, res) => {
+  console.log("http check OK");
 });
 
 app.listen(PORT, () => {
