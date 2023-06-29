@@ -6,8 +6,10 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  steps:
-    name: Check the deployed service URL
-    uses: jtalk/url-health-check-action@v3
-    with:
-      url: https://red-thunder-8099.fly.dev/
+  url_health_check:
+    name: Check deployed app
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: jtalk/url-health-check-action@v3
+        with:
+          url: https://red-thunder-8099.fly.dev/
