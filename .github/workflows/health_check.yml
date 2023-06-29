@@ -1,9 +1,8 @@
 name: App health check
 
 on:
-  pull_request:
-    branches: [main]
-    types: [opened, synchronize]
+  schedule:
+    - cron: "* 12 * * *"
 
 jobs:
   url_health_check:
