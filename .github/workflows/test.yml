@@ -19,10 +19,11 @@ jobs:
           COMMITS: ${{ toJson(github.event.commits) }}
         run: echo "$COMMITS"
       - name: commit messages
+        id: commits
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: |
           echo "commit_messages=$COMMIT_MESSAGES" >> $GITHUB_OUTPUT
       - name: test echoing commit messages
         run: |
-          echo ${{ steps.vars.outputs.commit_messages }}
+          echo ${{ steps.commits.outputs.commit_messages }}
