@@ -10,6 +10,7 @@ on:
 
 jobs:
   simple_deployment_pipeline:
+    name: Lint, build, test
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -32,7 +33,7 @@ jobs:
           start: npm run start-prod
           wait-on: "http://localhost:5000"
 
-  deploy:
+  deploy_app:
     name: Deploy app
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
