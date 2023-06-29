@@ -22,7 +22,7 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: |
-          echo "$COMMIT_MESSAGES" >> $NEW_MESSAGES
+          echo "commit_messages=$COMMIT_MESSAGES" >> $NEW_MESSAGES
       - name: test echoing commit messages
         run: |
-          echo "$NEW_MESSAGES"
+          echo {{ steps.vars.outputs.commit_messages }}
