@@ -1,0 +1,13 @@
+name: App health check
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+
+jobs:
+  steps:
+    name: Check the deployed service URL
+    uses: jtalk/url-health-check-action@v3
+    with:
+      url: https://red-thunder-8099.fly.dev/
