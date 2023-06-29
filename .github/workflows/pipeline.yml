@@ -36,7 +36,7 @@ jobs:
     name: Bump version and push tag
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-22.04
-    if: ${{ github.event_name == 'push' && contains(join(toJson(github.event.commits.*.message),','),'#skip') }}
+    if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message),','),'#skip') }}
     steps:
       - uses: actions/checkout@v3
       - uses: anothrNick/github-tag-action@1.64.0
@@ -48,7 +48,7 @@ jobs:
     name: Deploy app
     needs: [tag_release]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && contains(join(toJson(github.event.commits.*.message),','),'#skip')}}
+    if: ${{ github.event_name == 'push' && !contains(join(toJson(github.event.commits.*.message),','),'#skip')}}
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
