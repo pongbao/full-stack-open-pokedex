@@ -1,14 +1,14 @@
-name: App health check
+# name: App health check
 
-on:
-  schedule:
-    - cron: "* 12 * * *"
+# on:
+#   schedule:
+#     - cron: "* 12 * * *"
 
-jobs:
-  url_health_check:
-    name: Check deployed app
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: jtalk/url-health-check-action@v3
-        with:
-          url: https://red-thunder-8099.fly.dev/
+# jobs:
+#   url_health_check:
+#     name: Check deployed app
+#     runs-on: ubuntu-20.04
+#     steps:
+#       - uses: jtalk/url-health-check-action@v3
+#         with:
+#           url: https://red-thunder-8099.fly.dev/
